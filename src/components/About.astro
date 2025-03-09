@@ -1,0 +1,48 @@
+---
+import { onMount } from 'solid-js';
+import gsap from 'gsap';
+
+onMount(() => {
+  gsap.fromTo(
+    '#about',
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+  );
+});
+---
+
+<section id="about" class="py-20 bg-secondary">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <h2 class="text-4xl font-bold">Who Am I?</h2>
+        <p class="text-lg text-primary/80">
+          A passionate full-stack developer with over 5 years of experience in crafting digital solutions. I specialize in building high-performance web applications using modern technologies and best practices.
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <h3 class="font-semibold text-accent">Frontend</h3>
+            <ul class="space-y-1 text-primary/70">
+              <li>React</li>
+              <li>Vue.js</li>
+              <li>Three.js</li>
+              <li>TypeScript</li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <h3 class="font-semibold text-accent">Backend</h3>
+            <ul class="space-y-1 text-primary/70">
+              <li>Node.js</li>
+              <li>Python</li>
+              <li>Laravel</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-[400px] bg-accent/10 rounded-lg overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'CEO at TechStart',
+    content: 'Working with this developer was an absolute pleasure. They delivered our project on time and exceeded our expectations.',
+    image: 'https://placehold.co/100x100'
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Product Manager',
+    content: 'Exceptional technical skills combined with great communication made our project a success.',
+    image: 'https://placehold.co/100x100'
+  },
+  {
+    name: 'Emily Brown',
+    role: 'Creative Director',
+    content: 'The attention to detail and creative problem-solving abilities were impressive. Highly recommended!',
+    image: 'https://placehold.co/100x100'
+  }
+];
+---
+
+<section id="testimonials" class="py-20 bg-secondary/50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">What Clients Say</h2>
+      <p class="text-lg text-primary/80 max-w-2xl mx-auto">
+        Don't just take my word for it - hear from some of my clients.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-secondary p-6 rounded-lg border border-primary/10">
+          <div class="flex items-center gap-4 mb-4">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name}
+              class="w-12 h-12 rounded-full"
+            />
+            <div>
+              <h3 class="font-semibold">{testimonial.name}</h3>
+              <p class="text-primary/70 text-sm">{testimonial.role}</p>
+            </div>
+          </div>
+          <p class="text-primary/80 italic">"{testimonial.content}"</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

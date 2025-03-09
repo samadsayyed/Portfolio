@@ -1,0 +1,55 @@
+---
+import { onMount } from 'solid-js';
+import gsap from 'gsap';
+
+const services = [
+  {
+    title: 'Web Development',
+    description: 'Building responsive and performant web applications using modern frameworks and best practices.',
+    icon: '🌐'
+  },
+  {
+    title: 'Backend Development',
+    description: 'Creating robust and scalable server-side solutions with Node.js, Python, and Laravel.',
+    icon: '⚙️'
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'Designing intuitive and engaging user interfaces that deliver exceptional user experiences.',
+    icon: '🎨'
+  },
+  {
+    title: 'API Development',
+    description: 'Developing RESTful APIs and GraphQL endpoints for seamless data integration.',
+    icon: '🔌'
+  }
+];
+
+onMount(() => {
+  gsap.fromTo(
+    '#services .service-item',
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' }
+  );
+});
+---
+
+<section id="services" class="py-20 bg-secondary/50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">What I Do?</h2>
+      <p class="text-lg text-primary/80 max-w-2xl mx-auto">
+        Providing comprehensive development solutions to help businesses thrive in the digital world.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.map(service => (
+        <div class="service-item bg-secondary p-6 rounded-lg border border-primary/10 hover:border-accent/50 transition-colors">
+          <div class="text-4xl mb-4">{service.icon}</div>
+          <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
+          <p class="text-primary/70">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
