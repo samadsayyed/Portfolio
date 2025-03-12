@@ -4,12 +4,18 @@ import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const { 
   title, 
-  description = "Freelance full-stack developer specializing in JavaScript, Python, and Laravel. Creating high-performance web applications with modern technologies."
+  description = "Samad Sayyed - Full-stack developer specializing in JavaScript, Python, and Laravel. Creating high-performance web applications with modern technologies.",
+  image = "/og-image.png"
 } = Astro.props;
+
+const siteUrl = 'https://samad-sayyed.netlify.app';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageUrl = new URL(image, siteUrl);
 ---
 
 <!doctype html>
@@ -23,39 +29,53 @@ const {
     
     <!-- SEO -->
     <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Samad Sayyed" />
+    <meta name="keywords" content="Samad Sayyed, full-stack developer, web development, JavaScript, Python, Laravel, React, Node.js, portfolio, software engineer" />
+    
+    <!-- Open Graph / Social Media -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Samad Sayyed Portfolio" />
+    <meta property="og:locale" content="en_US" />
     
-    <!-- Fonts -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:creator" content="@samadsayyed" />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Samad Sayyed",
+        "url": "https://samad-sayyed.netlify.app",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-stack developer specializing in JavaScript, Python, and Laravel",
+        "sameAs": [
+          "https://github.com/samadsayyed",
+          "https://linkedin.com/in/samadsayyed"
+        ]
+      }
+    </script>
+    
+    <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link rel="preload" as="image" href={ogImageUrl} />
     
-    <ViewTransitions />
+    <ViewTransitions fallback="swap" />
   </head>
   <body class="bg-secondary text-primary">
     <slot />
-    
-    <script>
-      import Lenis from '@studio-freight/lenis';
-
-      // Initialize smooth scroll
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        smoothWheel: true,
-      });
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
-      requestAnimationFrame(raf);
-    </script>
   </body>
 </html>
 
@@ -66,9 +86,11 @@ const {
   }
 
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #000;
     color: #fff;
+    font-display: swap;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -94,5 +116,14 @@ const {
     display: inline-block;
     transform: translateY(100%);
     animation: text-reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  @keyframes text-reveal {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 </style>

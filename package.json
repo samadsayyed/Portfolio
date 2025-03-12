@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "samad-sayyed-portfolio",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -11,19 +11,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.0.9",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.0",
-    "@example/basics": "file:",
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.14",
-    "@studio-freight/lenis": "^1.0.33",
     "@types/three": "^0.160.0",
     "astro": "^5.2.5",
     "framer-motion": "^10.18.0",
-    "gsap": "^3.12.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "solid-js": "^1.9.5",
-    "tailwindcss": "^3.4.1",
-    "three": "^0.160.0"
+    "three": "^0.160.1"
   }
 }
