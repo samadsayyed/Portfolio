@@ -49,34 +49,19 @@ function Model({ rotationY = 90, position = [0, 0, 0], scale = [1, 1, 1] }: Mode
           child.visible = false;
         }
       });
-
-      const maxDuration = Math.max(...animations.map((a) => a.duration)) * 1000;
-      setTimeout(() => {
-        setAnimationPlayed(true);
-        let intensity = 0;
-        const interval = setInterval(() => {
-          intensity += 10;
-          setSpotlightIntensity(intensity);
-          if (intensity >= 200) clearInterval(interval);
-        }, 200);
-      }, maxDuration);
     }
-  }, [actions, animations]);
+  }, [actions]);
 
   return (
     <>
-      <primitive 
-        object={scene} 
-        rotation={[mousePos.y * 0.1, degToRad(rotationY) + mousePos.x * 0.2, 0]} 
-      />
-      {animationPlayed && (
+      <primitive object={scene} />
+      {spotlightIntensity > 0 && (
         <spotLight
-          position={[-12, 6, 0]}
+          position={[mousePos.x * 10, mousePos.y * 10 + 5, 5]}
           intensity={spotlightIntensity}
-          color="red"
           angle={0.5}
           penumbra={0.5}
-          castShadow
+          decay={2}
         />
       )}
     </>
@@ -114,7 +99,7 @@ const Hero: React.FC = () => {
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              Crafting Digital
+              Hi, I'm Samad
             </motion.span>
             <motion.span
               className="block reveal-text text-gradient"
@@ -122,7 +107,7 @@ const Hero: React.FC = () => {
               animate={{ y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             >
-              Experiences
+              Full-Stack Developer
             </motion.span>
           </h1>
 
@@ -132,8 +117,8 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Full-stack developer specializing in creating exceptional digital experiences
-            with React, Node.js, Three.js, Python, and Laravel.
+            I specialize in creating exceptional digital experiences
+            with React, Node.js, Three.js, Python, and Laravel. Let's build something amazing together.
           </motion.p>
 
           <motion.div
