@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [tailwind(), react(), sitemap()],
   site: 'https://samad-sayyed.netlify.app',
-  build: {
-    assets: '_assets'
-  }
+  // build: {
+  //   assets: '_assets'
+  // }
 });
