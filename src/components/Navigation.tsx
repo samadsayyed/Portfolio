@@ -42,7 +42,7 @@ const Navigation = () => {
             whileTap={{ scale: 0.95 }}
           >
             <span className="text-accent">{'<'}</span>
-            Samad
+            Developer
             <span className="text-accent">{'/>'}</span>
           </motion.a>
           <div className="hidden md:flex space-x-8">

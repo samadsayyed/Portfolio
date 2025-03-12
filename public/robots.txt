@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://samad-sayyed.netlify.app/sitemap-index.xml
