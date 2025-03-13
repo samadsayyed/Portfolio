@@ -85,7 +85,7 @@ function Model({ rotationY = 90, position = [0, 0, 0], scale = [1, 1, 1] }: Mode
 
 const Hero: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center bg-black">
+    <div className="flex flex-col-reverse md:flex-row items-center bg-black">
       {/* 3D Section */}
       <div className="w-full h-screen md:w-1/2 md:h-screen">
         <Canvas
